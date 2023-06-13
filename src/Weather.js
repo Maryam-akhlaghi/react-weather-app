@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Weather.css";
 import 'bootstrap/dist/css/bootstrap.css';
+import BeatLoader from "react-spinners/BeatLoader";
+
 export default function Weather(){
+    const override= {
+        display: "inline",
+        margin: "0 auto",
+        
+      };
+    const [loaded, setLoaded] = useState(false);
+    if (loaded){
     return <div className='Weather'>
         <div className="container">
            
@@ -28,5 +37,18 @@ export default function Weather(){
               </div>
             </div>
         </div>
-    </div>
+    </div>}
+    else{
+
+        return <div className="Weather">
+           <div className="loading">Loading  😊  {" "}
+           <BeatLoader color="#F65282"
+            margin={4}
+            size={13}
+            speedMultiplier={0.8}
+            cssOverride={override} />
+           <br />Thank you for your patience, < br /> I really appreciate it. 😘</div> 
+        </div>
+       
+    }
 }
