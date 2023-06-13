@@ -1,12 +1,10 @@
-
-
-function App() {
+import React from "react";
+import Weather from "./Weather";
+import "./App.css"
+export default function App() {
   return (
     <div className="App">
-      
-      Hello from Maryam
+     <Weather  />
     </div>
   );
 }
-
-export default App;
