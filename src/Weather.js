@@ -3,6 +3,7 @@ import "./Weather.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from "axios";
+import FormatDate from "./FormatDate";
 
 export default function Weather(props){
     const override= {
@@ -20,9 +21,11 @@ export default function Weather(props){
               wind : Math.round(response.data.wind.speed),
               temp : Math.round(response.data.temperature.current),
               iconUrl : `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
-              
+              date : new Date(response.data.time * 1000),
              })
        setLoaded(true);
+       console.log(response.data);
+       console.log(weatherData.date);
     };
     if (loaded){
     return <div className='Weather'>
@@ -42,7 +45,7 @@ export default function Weather(props){
                 
               <div>
                  <h1>{weatherData.city}, {weatherData.country}</h1>
-                 <p>Sunday 12:25 ,<span> {weatherData.description}</span></p>
+                 <FormatDate  date={weatherData.date} /> ,<span> {weatherData.description}</span>
                  <p>Humidity :<span className="colored-numbers"> {weatherData.humidity}%</span><span>, Wind : <span className="colored-numbers">{weatherData.wind}km/h</span></span></p>
               </div>
               <div>
