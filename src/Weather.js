@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from "axios";
 
-export default function Weather(){
+export default function Weather(props){
     const override= {
         display: "inline",
         margin: "0 auto",
         
       };
-    let [loaded, setLoaded] = useState(false);
-    let [weatherData, setWeatherData] =useState(null);
+    const [loaded, setLoaded] = useState(false);
+    let [weatherData, setWeatherData] =useState({});
     function setResult(response){
         setWeatherData({city : response.data.city ,
              country : response.data.country ,
@@ -19,7 +19,7 @@ export default function Weather(){
               humidity : Math.round(response.data.temperature.humidity) ,
               wind : Math.round(response.data.wind.speed),
               temp : Math.round(response.data.temperature.current),
-              icon : response.data.condition.icon,
+              iconUrl : `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
               
              })
        setLoaded(true);
@@ -46,16 +46,16 @@ export default function Weather(){
                  <p>Humidity :<span className="colored-numbers"> {weatherData.humidity}%</span><span>, Wind : <span className="colored-numbers">{weatherData.wind}km/h</span></span></p>
               </div>
               <div>
-              <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/{weatherData.icon}.png" alt={weatherData.description} /> <span className="temperature">{weatherData.temp}</span><span className="unit">°C</span>
+              <img src={weatherData.iconUrl} alt={weatherData.description} /> <span className="temperature">{weatherData.temp}</span><span className="unit">°C</span>
 
               </div>
             </div>
         </div>
     </div>}
     else{
-        let city ="Sydney"
+        
         const apiKey="8bd8249b0de0430coc410dff16ctaab6";
-        let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+        let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
         axios.get(apiUrl).then(setResult);
         return <div className="Weather">
            <div className="loading">Loading  😊  {" "}
