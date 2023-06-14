@@ -1,4 +1,17 @@
 .App{
     margin: 60px auto;
     max-width: 60%;
+    font-family: Cerebri-Sans,Helvetica,Arial,sans-serif;
+}
+.App footer{
+    color: #878787;
+    text-align: center;
+    margin-top: 10px;
+}
+.App footer a{
+    color: #885df1;
+    text-decoration: none;
+}
+.App footer a:hover {
+    font-weight: bold;
 }

@@ -30,6 +30,9 @@
     padding: 15px;
 
 }
+.Weather .search-button:hover {
+    font-weight: bold;
+}
 .Weather .info-container{
     display: flex;
     justify-content: space-between;
