@@ -5,6 +5,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import axios from "axios";
 import FormatDate from "./FormatDate";
 import WeatherIcon from "./WeatherIcon";
+import Temperature from "./Temperature";
 
 export default function Weather(props){
     const override= {
@@ -65,7 +66,7 @@ export default function Weather(props){
               </div>
               <div>
                 
-              <WeatherIcon icon ={weatherData.icon}/> <span className="temperature">{weatherData.temp}</span><span className="unit">°C</span>
+              <WeatherIcon icon ={weatherData.icon}/> <Temperature defaultTemperature={weatherData.temp}/> 
 
               </div>
             </div>

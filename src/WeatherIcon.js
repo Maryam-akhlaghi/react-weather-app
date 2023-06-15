@@ -42,7 +42,7 @@ export default function WeatherIcon(props){
         "mist-day" : "goldenrod" ,
         "mist-night" : "midnightblue",
     }
-    return <div className="WeatherIcon">
+    return <div className="WeatherIcon"  style={{display : "inline"}}>
         <ReactAnimatedWeather
     icon={iconMapping[props.icon]}
     color={colorMapping[props.icon]}
