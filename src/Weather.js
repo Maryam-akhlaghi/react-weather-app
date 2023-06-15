@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import BeatLoader from "react-spinners/BeatLoader";
 import axios from "axios";
 import FormatDate from "./FormatDate";
+import WeatherIcon from "./WeatherIcon";
 
 export default function Weather(props){
     const override= {
@@ -36,7 +37,7 @@ export default function Weather(props){
               humidity : Math.round(response.data.temperature.humidity) ,
               wind : Math.round(response.data.wind.speed),
               temp : Math.round(response.data.temperature.current),
-              iconUrl : `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
+              icon : response.data.condition.icon,
               date : new Date(response.data.time * 1000),
              })
        setLoaded(true);
@@ -58,12 +59,13 @@ export default function Weather(props){
             <div className="info-container">
                 
               <div>
-                 <h1>{weatherData.city}, {weatherData.country}</h1>
+                 <h1>{weatherData.city}, <span className="country">{weatherData.country}</span></h1>
                  <FormatDate  date={weatherData.date} /> ,<span> {weatherData.description}</span>
                  <p>Humidity :<span className="colored-numbers"> {weatherData.humidity}%</span><span>, Wind : <span className="colored-numbers">{weatherData.wind}km/h</span></span></p>
               </div>
               <div>
-              <img src={weatherData.iconUrl} alt={weatherData.description} /> <span className="temperature">{weatherData.temp}</span><span className="unit">°C</span>
+                
+              <WeatherIcon icon ={weatherData.icon}/> <span className="temperature">{weatherData.temp}</span><span className="unit">°C</span>
 
               </div>
             </div>
