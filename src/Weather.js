@@ -60,7 +60,7 @@ export default function Weather(props){
             <div className="info-container">
                 
               <div>
-                 <h1>{weatherData.city}, <span className="country">{weatherData.country}</span></h1>
+                 <h1>{weatherData.city}<span className="country d-none">, {weatherData.country}</span></h1>
                  <FormatDate  date={weatherData.date} /> ,<span> {weatherData.description}</span>
                  <p>Humidity :<span className="colored-numbers"> {weatherData.humidity}%</span><span>, Wind : <span className="colored-numbers">{weatherData.wind}km/h</span></span></p>
               </div>
