@@ -1,4 +1,4 @@
-import Rreact , {useState} from "react";
+import React , {useState} from "react";
 export default function Temperature(props){
     const [unit ,setUnit] = useState("celsius");
 
