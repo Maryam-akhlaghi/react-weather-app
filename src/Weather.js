@@ -12,7 +12,23 @@ export default function Weather(props){
         
       };
     const [loaded, setLoaded] = useState(false);
+    let [city, setCity] = useState(props.defaultCity);
     let [weatherData, setWeatherData] =useState({});
+
+    function handleSubmit(event){
+        event.preventDefault();
+       search();
+    }
+
+    function updateCity(event){ 
+        setCity(event.target.value);
+    }
+
+    function search(){
+        const apiKey="8bd8249b0de0430coc410dff16ctaab6";
+        let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(setResult);
+    }
     function setResult(response){
         setWeatherData({city : response.data.city ,
              country : response.data.country ,
@@ -24,18 +40,16 @@ export default function Weather(props){
               date : new Date(response.data.time * 1000),
              })
        setLoaded(true);
-       console.log(response.data);
-       console.log(weatherData.date);
     };
     if (loaded){
     return <div className='Weather'>
         <div className="container">
            
                
-              <form>
+              <form onSubmit={handleSubmit}>
                  <div className="row" >
 
-                     <div className="col-9 "><input className="search-input form-control" type="search" placeholder="Enter a city" autoFocus="on" ></input> </div>
+                     <div className="col-9 "><input className="search-input form-control" type="search" placeholder="Enter a city" autoFocus="on" onChange={updateCity}></input> </div>
                      <div className="col-3"><input className="search-button form-control" type="button" value="Search"></input></div>
                   </div>
               </form>
@@ -57,9 +71,8 @@ export default function Weather(props){
     </div>}
     else{
         
-        const apiKey="8bd8249b0de0430coc410dff16ctaab6";
-        let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(setResult);
+        
+       search();
         return <div className="Weather">
            <div className="loading">Loading  😊  {" "}
            <BeatLoader color="#F65282"
