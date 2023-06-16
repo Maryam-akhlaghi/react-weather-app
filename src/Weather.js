@@ -6,6 +6,7 @@ import axios from "axios";
 import FormatDate from "./FormatDate";
 import WeatherIcon from "./WeatherIcon";
 import Temperature from "./Temperature";
+import Forecast from "./Forecast";
 
 export default function Weather(props){
     const override= {
@@ -66,10 +67,10 @@ export default function Weather(props){
               </div>
               <div>
                 
-              <WeatherIcon icon ={weatherData.icon}/> <Temperature defaultTemperature={weatherData.temp}/> 
-
+              <WeatherIcon icon ={weatherData.icon} size={64}/> <Temperature defaultTemperature={weatherData.temp}/> 
               </div>
             </div>
+            <Forecast city={city}/>
         </div>
     </div>}
     else{
