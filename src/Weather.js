@@ -70,7 +70,7 @@ export default function Weather(props){
               <WeatherIcon icon ={weatherData.icon} size={64}/> <Temperature defaultTemperature={weatherData.temp}/> 
               </div>
             </div>
-            <Forecast city={city}/>
+            <Forecast city={weatherData.city}/>
         </div>
     </div>}
     else{
