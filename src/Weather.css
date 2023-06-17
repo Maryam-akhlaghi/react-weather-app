@@ -6,6 +6,7 @@
     color: #878787;
     font-family: Cerebri-Sans,Helvetica,Arial,sans-serif;
     padding: 40px;
+    background-color: white;
     
 }
 
@@ -23,6 +24,10 @@
     height: 55px;
     padding: 15px 20px;
 }
+.Weather .search-input::placeholder {
+    line-height: 20px;
+    color: rgba(39, 33, 66, 0.4);
+  }
 .Weather .search-button{
     background-color: #885df1;
     color: #ffff;
