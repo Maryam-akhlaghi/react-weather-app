@@ -18,3 +18,9 @@ body {
 .App footer a:hover {
     font-weight: bold;
 }
+@media(max-width:576px){
+    .App{
+        min-width: 90%;
+        margin: 40px auto;
+    }
+}

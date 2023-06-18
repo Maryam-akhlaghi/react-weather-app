@@ -52,22 +52,25 @@ export default function Weather(props){
               <form onSubmit={handleSubmit}>
                  <div className="row" >
 
-                     <div className="col-9 "><input className="search-input form-control" type="search" placeholder="Enter a city ..." autoFocus="on" onChange={updateCity}></input> </div>
-                     <div className="col-3"><input className="search-button form-control" type="button" value="Search"></input></div>
+                     <div className="col-md-9"><input className="search-input form-control" type="search" placeholder="Enter a city ..." autoFocus="on" onChange={updateCity}></input> </div>
+                     <div className="col-md-3"><input className="search-button " type="button" value="Search"></input></div>
                   </div>
               </form>
             
             <hr />
-            <div className="info-container">
+            <div className="row">
                 
-              <div>
-                 <h1>{weatherData.city}<span className="country d-none">, {weatherData.country}</span></h1>
+              <div className="col-md-6">
+                 <h1>{weatherData.city}<span className="country">, {weatherData.country}</span></h1>
                  <FormatDate  date={weatherData.date} /> ,<span> {weatherData.description}</span>
                  <p>Humidity :<span className="colored-numbers"> {weatherData.humidity}%</span><span>, Wind : <span className="colored-numbers">{weatherData.wind}km/h</span></span></p>
               </div>
-              <div>
+              <div className="col-md-2 mt-5">
                 
-              <WeatherIcon icon ={weatherData.icon} size={64}/> <Temperature defaultTemperature={weatherData.temp}/> 
+              <WeatherIcon icon ={weatherData.icon} size={64} /> 
+              </div>
+              <div className="col-lg-4 col-md-6 col-sm-8 mt-4">
+              <Temperature defaultTemperature={weatherData.temp}/> 
               </div>
             </div>
             <Forecast city={weatherData.city}/>
